@@ -18,12 +18,12 @@ int main()
     }
     cout<<"Enter the number you want to find in array: "<<endl;
     cin>>NumtoFind;
-    char choice;
-	cout<<"Please choose searching method \nPress l for linear search and press b for binary search: "<<endl;
+    int choice;
+	cout<<"Please choose searching method \nPress 1 for linear search and press 2 for binary search: "<<endl;
 	cin>>choice;
 	while(start <= end)
 	{
-	if(choice == 'l')
+	if(choice == 1)
 		{
 	           if(array[start] == NumtoFind)
 			   {
@@ -35,7 +35,7 @@ int main()
 	            start++;
 	           }
 	    }
-	else if(choice == 'b')
+	else if(choice == 2)
 		{
 			int mid;
 	        mid = (start+end)/2;
