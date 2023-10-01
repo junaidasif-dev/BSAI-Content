@@ -80,6 +80,6 @@ print("Area of circle is ",area(3))'''
 numbers = []
 print("\tEnter any 10 numbers\t")
 for i in range(10):
-    num = int(input(numbers))
+    num = int(input())
     numbers.append(num)
 large_num()"""
