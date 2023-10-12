@@ -5,6 +5,7 @@ int main()
     int size;
     int NumtoFind;
     bool flag = false;
+    int mid;
     cout<<"Enter the size of an array: ";
     cin>>size;
     int start = 0;
@@ -37,7 +38,6 @@ int main()
 	    }
 	else if(choice == 2)
 		{
-			int mid;
 	        mid = (start+end)/2;
 	           if(array[mid] == NumtoFind)
 			   {
@@ -61,7 +61,7 @@ int main()
 	}
 	    if(flag)
 	    {
-	        cout<<NumtoFind<<" is founded in an array!"<<endl;
+	        cout<<NumtoFind<<" is founded in an array at index "<<start<<endl;
 	    }
 	    else{
 	        cout<<NumtoFind<<" is not found in an array!";
