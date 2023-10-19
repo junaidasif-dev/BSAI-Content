@@ -75,4 +75,3 @@ for i in str:
     if str in ['a', 'e', 'i', 'o', 'u']:
         v = v+1
 print(v)
-

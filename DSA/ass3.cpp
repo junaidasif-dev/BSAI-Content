@@ -1,6 +1,6 @@
 #include<iostream>
 using namespace std;
-void bubble(int arr[], int size)
+void bubble(int arr[], int size) //bubble sorting
 {
 	for(int i = 0; i<size-1; i++)
 	{
@@ -16,7 +16,7 @@ void bubble(int arr[], int size)
 		}
 	}
 }
-void selection(int arr[], int size)
+void selection(int arr[], int size) //selection sorting
 {
 	for(int i=0; i<size; i++)
 		{
@@ -33,7 +33,7 @@ void selection(int arr[], int size)
 			arr[min] = temp;
 		}
 }
-void insertion(int arr[], int size)
+void insertion(int arr[], int size) //insertion sorting
 	{
 		for(int i=1; i<size; i++)
 		{
@@ -103,14 +103,14 @@ int main()
     		int start = 0;
     		int end=size-1;
     		int mid;
-    		cout<<"Enter the number you want to find in array: "<<endl;
+    		cout<<"Enter the number you want to find in an array: "<<endl;
     		cin>>NumtoFind;
     		char fchoice;
 			cout<<"Please choose searching method \nPress (l) for linear search and press (b) for binary search: "<<endl;
 			cin>>fchoice;
 			while(start <= end)
 				{
-					if(fchoice == 'l')
+					if(fchoice == 'l') //linear search
 					{
 	          		 if(arr[start] == NumtoFind)
 			   			{
@@ -122,7 +122,7 @@ int main()
 	           				start++;
 	           			}
 	    			}
-					else if(fchoice == 'b')
+					else if(fchoice == 'b') //binary search
 					{
 	        			mid = (start+end)/2;
 	        		    if(arr[mid] == NumtoFind)
@@ -147,7 +147,7 @@ int main()
 				}	
 	    	if(flag)
 	    	{
-	        	cout<<NumtoFind<<" is founded in an array at index "<<start<<endl;
+	        	cout<<NumtoFind<<" is founded in an array at index "<<start<<"\nThis index assigned after sorting the array."<<endl;
 	    	}
 	    	else
 			{

@@ -1,72 +1,90 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
-class IntStack //class
-{
-	private:
-		int *StackArray;
-		int StackSize;
-		int top;
-	public:
-		IntStack(int size) //constructor
-		{
-			StackArray = new int(size); //int[size];
-			StackSize = size;
-			top = -1;
-		}
-		~IntStack() //destructor
-		{
-			delete []StackArray;
-		}
-		bool IsFull() //if stack is full
-		{
-			if(top == StackSize-1)
-				return true;
-			else
-				return false;	
-		}
-		bool IsEmpty() //if stack is empty
-		{
-			if(top == -1)
-				return true;
-			else
-				return false;
-		}
-		void Push(int value) //if user want to push the value in stack
-		{
-			if(IsFull())
-			{
-				cout<<"\nStack is overflow.";
-			}
-			else
-			{
-				top++;
-				StackArray[top] = value;
-			}
-		}
-		void Pop() //if user want to pop the value from stack
-		{
-			if(IsEmpty())
-			{
-				cout<<"\nStack is underflow.";
-			}
-			else
-			{
-				cout<<endl<<StackArray[top]<<" Value is pop out from stack.";
-				top--;
-			}
-		}
-		void Display() //if user want to display the values of stack
-		{
-			if(IsEmpty())
-			{
-				cout<<"\nStack is underflow.";
-			}
-			else
-			{
-				for(int i=top;i>=0;i--)
-				{
-					cout<<endl<<StackArray[i];
-				}
-			}
-		}
+
+class IntStack{
+
+  private:
+    int *stackArray;
+    int stackSize;
+    int top;
+    int num;
+
+  public:
+    IntStack(int size){
+      stackArray = new int[size];
+      stackSize = size;
+      top = -1;
+    }
+
+    ~IntStack(){
+      delete [] stackArray;
+    }
+
+    void push(){
+      
+      if(isFull()){
+        cout << "\nThe stack is full.\n";
+      }
+      else{
+        top++;
+
+        cout << "\nEnter the Number you want to PUSH: ";
+        cin >> num;
+        stackArray[top] = num;
+        cout << "\nNumber is Pushed into Stack!!\n";
+      }
+    }
+
+
+
+    void pop(){
+      
+      if(isEmpty()){
+        cout << "\nStack Overflow!!\n";
+      }
+      else{
+        cout << "\nThe popped element is: " << stackArray[top] << endl;
+        top--;
+      }
+    }
+
+
+    bool isFull(){
+      
+      if(top == stackSize - 1){
+        return true;
+      }
+      else{
+        return false;
+      }
+    }
+
+    bool isEmpty(){
+      
+      if(top == -1){
+        return true;
+      }
+      else{
+        return false;
+      }
+    }
+
+
+    void display(){
+      
+      if(isEmpty()){
+        cout << "\nStack Underflow!!\n";
+      }
+      else{
+        cout << "\nThe stack elements are: ";
+        
+        for(int i = top; i >= 0; i--){  // for(int i = 0; i <= top; i++)
+          cout << stackArray[i] << " ";
+        }
+        cout << endl;
+      }
+      
+    }
+
+
 };
