@@ -136,4 +136,86 @@ void linkedlist::traverselist()
 				currnode = currnode->next;
 			}
 		}
-	}				
+	}	
+void linkedlist::deletefromhead()
+	{
+		if(isempty())
+		{
+			cout<<"\nList is empty.";
+		}
+		else if(head==tail)
+		{
+			Node* currnode = head;
+			head = tail = 0;
+			delete currnode;
+		}	
+		else
+		{
+			Node* currnode = head;
+			head = head->next;
+			currnode->next = 0;
+			delete currnode;
+		}
+	}	
+void linkedlist::deletefromtail()
+	{
+		if(isempty())
+		{
+			cout<<"\nList is empty.";
+		}
+		else if(tail==head)
+		{
+			Node* currnode = tail;
+			tail = head = 0;
+			delete currnode;
+		}	
+		else
+		{
+			Node* currnode = head;
+			Node* prevnode = 0;
+			while(currnode->next!=0)
+			{
+				prevnode = currnode;
+				currnode = currnode->next;
+			}
+			tail = prev;
+			tail->next = 0;
+			delete currnode;
+		}
+	}			
+void linkedlist::deletenode(double value)
+	{
+		if(isempty())
+		{
+			cout<<"\nList is empty.";
+		}
+		else if(value==head)
+		{
+			deletefromhead();
+		}
+		else if(value==tail)
+		{
+			deletefromtail();
+		}
+		else
+		{
+			Node* currnode = head;
+			Node* prevnode = 0;
+			while(currnode!=0 && currnode->data!=value)
+			{
+				prevnode = currnode;
+				currnode = currnode->next;
+			}
+			if(currnode==0)
+			{
+				cout<<"\nValue doesn't exist in the list.";
+			}
+			else
+			{
+				prevnode->next = currnode->next;
+				currnode->next=0;
+				delete currnode;
+			}
+		}
+		
+	}		
