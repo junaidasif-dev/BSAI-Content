@@ -178,7 +178,7 @@ void linkedlist::deletefromtail()
 				prevnode = currnode;
 				currnode = currnode->next;
 			}
-			tail = prev;
+			tail = prevnode;
 			tail->next = 0;
 			delete currnode;
 		}
@@ -189,11 +189,11 @@ void linkedlist::deletenode(double value)
 		{
 			cout<<"\nList is empty.";
 		}
-		else if(value==head)
+		else if(head->data == value)
 		{
 			deletefromhead();
 		}
-		else if(value==tail)
+		else if(tail->data == value)
 		{
 			deletefromtail();
 		}
