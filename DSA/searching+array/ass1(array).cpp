@@ -28,5 +28,6 @@ int main()
 		cout<<"Sum of row "<<i+1<<" is: "<<sumofrow[row]<<endl;
 	}
 	
+	
 	return 0;
 }

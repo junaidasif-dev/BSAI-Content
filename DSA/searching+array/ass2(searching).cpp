@@ -25,19 +25,19 @@ int main()
 	while(start <= end)
 	{
 	if(choice == 1)
-		{
-	           if(array[start] == NumtoFind)
-			   {
-	            flag = true;
+		{	//linear search
+	        if(array[start] == NumtoFind)
+			{
+	        	flag = true;
 	            break;
-	           }
-	           else
-			   {
+	        }
+	        else
+			{
 	            start++;
-	           }
+	        }
 	    }
 	else if(choice == 2)
-		{
+		{   //binary search
 	        mid = (start+end)/2;
 	           if(array[mid] == NumtoFind)
 			   {
