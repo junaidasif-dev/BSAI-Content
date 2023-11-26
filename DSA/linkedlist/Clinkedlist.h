@@ -1,223 +1,195 @@
-#include "Dnode.h"
-#include <iostream>
+#include"Cnode.h"
+#include<iostream>
 using namespace std;
 
-class linkedlist
+class CLinkedList
 {
 	private:
-		Dnode* head;
-		Dnode* tail;
+		Cnode* Head;
 	public:
-		linkedlist()
+	    CLinkedList()
 		{
-			head = 0;
-			tail = 0;
-		}	
-		void insertathead(double value);
-		void insertattail(double value);
-		void insertafter(double existing, double value);
-		void insertbefore(double existing, double value);
-		void deletefromhead();
-		void deletefromtail();
-		void deletenode(double value);
-		void traverselist();
-		void reverseTraverselist();
-		bool isempty();
-};
-bool linkedlist::isempty()
-	{
-		if(head == 0 && tail == 0)
-		{
-			return true;	
+			Head = 0;
 		}
-		else
+		
+		void Insert_At_Head( double value )
 		{
-			return false;
-		}	
-	}
-void linkedlist::insertathead(double value)
-	{
-		Dnode* newnode = new Dnode(value); 
-		if(isempty())
-		{
-			head = tail = newnode;
-		}
-		else
-		{
-			newnode->next = head;  // -> for accessing data member
-			head = newnode;
-		}
-	}
-void linkedlist::insertattail(double value)
-	{
-		Dnode* newnode = new Dnode(value); 
-		if(head == 0 && tail == 0)
-		{
-			head = tail = newnode;
-		}
-		else
-		{
-			tail->next = newnode;
-			tail = newnode;
-		}
-	}
-void linkedlist::insertafter(double existing, double value)
-	{
-		if(isempty())
-		{
-			cout<<"\nList is empty.";
-		}
-		else if(existing == tail->data)
-		{
-			insertattail(value);
-		}
-		else
-		{
-			Dnode* currnode = head;
-			while(currnode != 0 && currnode->data != existing)
+			Cnode* newNode = new Cnode( value );
+			if ( Head == 0 )
 			{
-				currnode = currnode->next;
+				Head = newNode;
+				newNode->next = Head;
 			}
-			if(currnode==0)
-			{
-				cout<<"\nInsertion is not possible in the list because existing element in not present in the list.";
-			}
+			
 			else
 			{
-				Dnode* newnode = new Dnode(value);
-				newnode->next = currnode->next;
-				newnode->prev = currnode;
-				currnode->next->prev = newnode;
-				currnode->next = newnode;
+				Cnode* current = Head;
+				while ( current->next!= Head )
+				{
+					current = current->next;
+				} 
+				 
+				 Head = newNode;
+				 current->next = newNode;
 			}
 		}
-	}	
-void linkedlist::insertbefore(double existing, double value)
-	{
-		if(isempty())
+	
+		void Insert_At_Last( double value )
 		{
-			cout<<"\nList is empty.";
-		}
-		else if(existing == head->data)
-		{
-			insertathead(value);
-		}
-		else
-		{
-			Dnode* currnode = head;
-			while(currnode != 0 && currnode->data != existing)
+			Cnode* newNode = new Cnode( value );
+			if ( Head == 0 )
 			{
-				currnode = currnode->next;
+				Head = newNode;
+				newNode->next = Head;
 			}
-			if(currnode==0)
-			{
-				cout<<"\nInsertion is not possible in the list because existing element in not present in the list.";
-			}
+			
 			else
 			{
-				Dnode* newnode = new Dnode(value);
-				newnode->next = currnode;    	   
-				newnode->prev = currnode->prev;
-				currnode->prev->next = newnode;
-				currnode->prev = newnode;          
-			}
-		}
-	}
-void linkedlist::traverselist()	
-	{
-		if(isempty())
-		{
-			cout<<"\nList is empty.";
-		}
-		else
-		{
-			cout<<"\nValues in list are: "<<endl;
-			Dnode* currnode = head;
-			while(currnode != 0)
-			{
-				cout<<currnode->data<<endl;
-				currnode = currnode->next;
-			}
-		}
-	}	
-void linkedlist::deletefromhead()
-	{
-		if(isempty())
-		{
-			cout<<"\nList is empty.";
-		}
-		else if(head==tail)
-		{
-			Dnode* dellnode = head;
-			head = tail = 0;
-			delete dellnode;
-		}	
-		else
-		{
-			Dnode* dellnode = head;
-			head->next->prev = 0;
-			head = head->next;
-			dellnode->next = 0;
-			delete dellnode;
-		}
-	}	
-void linkedlist::deletefromtail()
-	{
-		if(isempty())
-		{
-			cout<<"\nList is empty.";
-		}
-		else if(tail==head)
-		{
-			Dnode* dellnode = tail;
-			tail = head = 0;
-			delete dellnode;
-		}	
-		else
-		{
-			Dnode* dellnode = head;
-			while(dellnode->next!=0)
-			{
-				dellnode = dellnode->next;
-			}
-			tail = dellnode;
-			tail->prev->next = 0;
-			tail = tail->prev;
-			dellnode->prev = 0;
-			delete dellnode;
-		}
-	}			
-void linkedlist::deletenode(double value)
-	{
-		if(isempty())
-		{
-			cout<<"\nList is empty.";
-		}
-		else if(head->data == value)
-		{
-			deletefromhead();
-		}
-		else if(tail->data == value)
-		{
-			deletefromtail();
-		}
-		else
-		{
-			Dnode* dellnode = head;
-			while(dellnode!=0 && dellnode->data!=value)
-			{
-				dellnode = dellnode->next;
-			}
-			if(dellnode==0)
-			{
-				cout<<"\nValue doesn't exist in the list.";
-			}
-			else
-			{
-				dellnode
-				dellnode->next=0;
-				delete dellnode;
+				Cnode* current = Head;
+				while ( current->next!= Head )
+				{
+					current = current->next;
+				}
+				newNode->next = current->next;
+				current->next = newNode;
 			}
 		}
 		
-	}		
+		void Insert_After( double existing , double value )
+		{
+
+	          if ( Head == 0) 
+        	 {
+		       cout<<" List is empty ! "<<endl;
+        	 }
+	
+	       
+	        else
+	           {
+		            Cnode *current= Head;
+		            while (current!=0 && current->data!=existing)
+		                 {
+			                current = current->next;  
+		                }
+		            if(current==0)
+		             {
+			              cout<<" Existing value is not in the list: "<<endl;
+		             }
+		            else
+		              {
+		                 	Cnode *newNode = new Cnode(value);
+			                newNode->next = current->next;
+			                current->next = newNode;
+		              }
+	           }
+        }
+        
+        void Insert_Before( double existing , double value )
+        {
+        	 if( Head == 0) 
+               {
+   	             cout<<" list is empty! "<<endl;
+               }
+   
+             else if(existing == Head->data)
+               {
+                 Insert_At_Head(value);
+               }
+   
+             else
+               {
+   	             Cnode *prev=0;
+   	             Cnode *current=Head;
+   	             while (current!=0 && current->data!= existing)
+   	              {
+   	             	prev=current;
+   		            current=current->next;
+	              }
+	         if(current==0)
+	           {
+		         cout<<" Existing value is not in the list "<<endl;
+	           }
+	         else
+	           {
+		         Cnode *newNode=new Cnode(value);
+		         newNode->next=current;
+		         prev->next=newNode;
+	           }
+            }
+		}
+	
+	
+	void Delete_From_Head()
+	{
+		if ( Head == 0 )
+		{
+			cout<<" List is empty. "<<endl;
+		}
+		
+		else
+		{
+			Cnode* delNode = Head;
+			Cnode* current = Head;
+			while( current->next!= Head )
+			{
+				current = current->next;
+			}
+			current->next = Head->next;
+			Head = Head->next;
+			delNode->next = 0;
+			delete delNode;
+		}
+	}
+	
+	void Delete_Spacific( double existing )
+	{
+		if ( Head == 0 )
+		{
+			cout<<" List is empty. "<<endl;
+		}
+		else if ( existing == Head->data)
+		{
+			Delete_From_Head();
+		}
+		else
+		{
+			Cnode* current = Head->next;
+			Cnode* prev = Head;
+			while ( current!=Head && current->data!=existing)
+			{
+				prev = current;
+				current = current->next;	
+			}
+			if ( current == Head )
+			{
+				cout<<" value not existing. "<<endl;
+			}
+			else
+			{
+				prev->next = current->next;
+				current->next = 0;
+				delete current;
+			}
+		}
+	}
+	
+	void Traverse_List()
+	{
+		if ( Head == 0 )
+		{
+			cout<<" List is empty. "<<endl;
+		}
+		else
+		{
+			Cnode* current = Head;
+			cout<<" Values are: "<<endl;
+			do
+			{
+				cout<<current->data<<endl;
+				current = current->next;
+			}
+			while( current!= Head );
+		}
+	}	
+			
+};

@@ -1,16 +1,14 @@
 #include<iostream>
 using namespace std;
 
-class Dnode
+class Cnode
 {
 	public:
 		double data;
-		Dnode* next;
-		Dnode* prev;
-		Dnode(double i=0, Dnode* n=0, Dnode* p=0)
+		Cnode* next;
+		Cnode(double i=0, Cnode* n=0)
 		{
 			data = i;
 			next = n;
-			prev = p;
 		}
 };
