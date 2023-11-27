@@ -55,7 +55,8 @@ class doubleQueue
 					front=0;
 				}
 				rear++;
-				queueArray[rear]=value;
+			cout<<"Insert number:";	
+			cin>>queueArray[rear];
 			}
 		}
 		void DEQUEUE()

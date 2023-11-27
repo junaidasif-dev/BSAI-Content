@@ -52,7 +52,8 @@ class doublecqueue{
 				front=0;
 			}
 			rear=(rear+1)%queuesize;
-			queueArray[rear]=val;
+			cout<<"Insert number:";
+			cin>>queueArray[rear];
 		}
 	}
 	void Dequeue()

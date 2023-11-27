@@ -2,7 +2,7 @@
 #include<iostream>
 using namespace std;
 
-class CLinkedList
+class Clinkedlist
 {
 	private:
 		Cnode* Head;
@@ -12,7 +12,7 @@ class CLinkedList
 			Head = 0;
 		}
 		
-		void Insert_At_Head( double value )
+		void insertathead( double value )
 		{
 			Cnode* newNode = new Cnode( value );
 			if ( Head == 0 )
@@ -34,7 +34,7 @@ class CLinkedList
 			}
 		}
 	
-		void Insert_At_Last( double value )
+		void insertatlast( double value )
 		{
 			Cnode* newNode = new Cnode( value );
 			if ( Head == 0 )
@@ -55,71 +55,65 @@ class CLinkedList
 			}
 		}
 		
-		void Insert_After( double existing , double value )
+		void insertafter( double existing , double value )
+{
+		if(Head == 0)
 		{
-
-	          if ( Head == 0) 
-        	 {
-		       cout<<" List is empty ! "<<endl;
-        	 }
-	
-	       
-	        else
-	           {
-		            Cnode *current= Head;
-		            while (current!=0 && current->data!=existing)
-		                 {
-			                current = current->next;  
-		                }
-		            if(current==0)
-		             {
-			              cout<<" Existing value is not in the list: "<<endl;
-		             }
-		            else
-		              {
-		                 	Cnode *newNode = new Cnode(value);
-			                newNode->next = current->next;
-			                current->next = newNode;
-		              }
-	           }
-        }
-        
-        void Insert_Before( double existing , double value )
-        {
-        	 if( Head == 0) 
-               {
-   	             cout<<" list is empty! "<<endl;
-               }
-   
-             else if(existing == Head->data)
-               {
-                 Insert_At_Head(value);
-               }
-   
-             else
-               {
-   	             Cnode *prev=0;
-   	             Cnode *current=Head;
-   	             while (current!=0 && current->data!= existing)
-   	              {
-   	             	prev=current;
-   		            current=current->next;
-	              }
-	         if(current==0)
-	           {
-		         cout<<" Existing value is not in the list "<<endl;
-	           }
-	         else
-	           {
-		         Cnode *newNode=new Cnode(value);
-		         newNode->next=current;
-		         prev->next=newNode;
-	           }
-            }
+			cout<<"\nList is empty.";
 		}
+		else
+		{
+			Cnode* currnode = Head;
+			while(currnode != 0 && currnode->data != existing)
+			{
+				currnode = currnode->next;
+			}
+			if(currnode==0)
+			{
+				cout<<"\nInsertion is not possible in the list because existing element in not present in the list.";
+			}
+			else
+			{
+				Cnode* newnode = new Cnode(value);
+				newnode->next = currnode->next;
+				currnode->next = newnode;
+			}
+		}
+	}
+        
+    void insertbefore( double existing , double value )
+    {
+		if(Head == 0)
+		{
+			cout<<"\nList is empty.";
+		}
+		else if(existing == Head->data)
+		{
+			insertathead(value);
+		}
+		else
+		{
+			Cnode* prevnode = 0;
+			Cnode* currnode = Head;
+			while(currnode != 0 && currnode->data != existing)
+			{
+				prevnode = currnode;
+				currnode = currnode->next;
+			}
+			if(currnode==0)
+			{
+				cout<<"\nInsertion is not possible in the list because existing element in not present in the list.";
+			}
+			else
+			{
+				Cnode* newnode = new Cnode(value);
+				newnode->next = currnode;    	   // newnode = currnode
+				prevnode->next = newnode;          // currnode->next = currnode
+			}
+		}
+	}
 	
-	
-	void Delete_From_Head()
+	void deletefromhead()
 	{
 		if ( Head == 0 )
 		{
@@ -141,7 +135,7 @@ class CLinkedList
 		}
 	}
 	
-	void Delete_Spacific( double existing )
+	void deletespecific( double existing )
 	{
 		if ( Head == 0 )
 		{
@@ -149,7 +143,7 @@ class CLinkedList
 		}
 		else if ( existing == Head->data)
 		{
-			Delete_From_Head();
+			deletefromhead();
 		}
 		else
 		{
@@ -173,23 +167,21 @@ class CLinkedList
 		}
 	}
 	
-	void Traverse_List()
+	void traverselist()
 	{
-		if ( Head == 0 )
+		if(Head == 0)
 		{
-			cout<<" List is empty. "<<endl;
+			cout<<"\nList is empty.";
 		}
 		else
 		{
-			Cnode* current = Head;
-			cout<<" Values are: "<<endl;
-			do
+			cout<<"\nValues in list are: "<<endl;
+			Cnode* currnode = Head;
+			while(currnode != Head)
 			{
-				cout<<current->data<<endl;
-				current = current->next;
+				cout<<currnode->data<<endl;
+				currnode = currnode->next;
 			}
-			while( current!= Head );
 		}
-	}	
-			
+	}			
 };

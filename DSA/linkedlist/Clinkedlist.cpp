@@ -1,77 +1,58 @@
-/*#include <iostream>
-#include "linkedlist.h"
-using namespace std;
-int main()
-{
-	linkedlist list;
-	list.insertattail(14);
-	list.insertathead(5);
-	list.insertathead(26);
-	list.insertafter(26,9);
-	list.insertbefore(5,12);
-	list.traverselist();
-	return 0;
-}*/
-
 #include <iostream>
-#include "linkedlist.h"
+#include "Clinkedlist.h"
 using namespace std;
 int main()
 {
-	double val;
+	double value;
 	double existing;
 	char con;
 	int choice;
-	linkedlist list;
+	Clinkedlist list;
 	do
 	{
 		
 		cout<<"\tPress 1 for insert at head"<<endl;
-		cout<<"\tPress 2 for insert at tail"<<endl;
+		cout<<"\tPress 2 for insert at last"<<endl;
 		cout<<"\tPress 3 for insert after"<<endl;
 		cout<<"\tPress 4 for insert before"<<endl;
 		cout<<"\tPress 5 for delete from head"<<endl;
-		cout<<"\tPress 6 for delete from tail"<<endl;
-		cout<<"\tPress 7 for delete from specific node"<<endl;
-		cout<<"\tPress 8 for traverse node"<<endl;
+		cout<<"\tPress 6 for delete from specific node"<<endl;
+		cout<<"\tPress 7 for traverse node"<<endl;
 		cout<<"Enter choice: ";
 		cin>>choice;
 		switch (choice)
 		{
 			case 1:
 			cout<<"Enter value to insert at head: ";
-			cin>>val;
-			list.insertathead(val);
+			cin>>value;
+			list.insertathead(value);
 			break;
 	     case 2:
 			cout<<"Enter value to insert at tail: ";
-			cin>>val;
-			list.insertattail(val);
+			cin>>value;
+			list.insertatlast(value);
 		    break;
 		case 3:
 			cout<<"Enter value to insert after: ";
 			cin>>existing;
-			cin>>val;
-			list.insertafter(existing,val);
+			cin>>value;
+			list.insertafter(existing,value);
 		     break;
 	    case 4:
 			cout<<"Enter value to insert before: ";
 			cin>>existing;
-			cin>>val;
-			list.insertbefore(existing,val);
+			cin>>value;
+			list.insertbefore(existing,value);
 		    break;
 		case 5:		
 			list.deletefromhead();
 		    break;
-		case 6:		
-			list.deletefromtail();
-			break;
-		case 7:	
+		case 6:	
 			cout<<"Enter value for specific node deletion: ";
-			cin>>val;
-			list.deletenode(val);
+			cin>>value;
+			list.deletespecific(value);
 			break;	
-		case 8:	
+		case 7:	
 			list.traverselist();
 		    break;    
 		default:
