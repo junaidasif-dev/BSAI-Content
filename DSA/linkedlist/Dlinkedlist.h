@@ -2,13 +2,13 @@
 #include <iostream>
 using namespace std;
 
-class linkedlist
+class Dlinkedlist
 {
 	private:
 		Dnode* head;
 		Dnode* tail;
 	public:
-		linkedlist()
+		Dlinkedlist()
 		{
 			head = 0;
 			tail = 0;
@@ -19,12 +19,12 @@ class linkedlist
 		void insertbefore(double existing, double value);
 		void deletefromhead();
 		void deletefromtail();
-		void deletenode(double value);
+		void deleteSnode(double value);
 		void traverselist();
-		void reverseTraverselist();
+		void reversetraverselist();
 		bool isempty();
 };
-bool linkedlist::isempty()
+bool Dlinkedlist::isempty()
 	{
 		if(head == 0 && tail == 0)
 		{
@@ -35,7 +35,7 @@ bool linkedlist::isempty()
 			return false;
 		}	
 	}
-void linkedlist::insertathead(double value)
+void Dlinkedlist::insertathead(double value)
 	{
 		Dnode* newnode = new Dnode(value); 
 		if(isempty())
@@ -44,24 +44,26 @@ void linkedlist::insertathead(double value)
 		}
 		else
 		{
-			newnode->next = head;  // -> for accessing data member
+			newnode->next = head;  
+			head->prev = newnode;
 			head = newnode;
 		}
 	}
-void linkedlist::insertattail(double value)
+void Dlinkedlist::insertattail(double value)
 	{
 		Dnode* newnode = new Dnode(value); 
-		if(head == 0 && tail == 0)
+		if(isempty())
 		{
 			head = tail = newnode;
 		}
 		else
 		{
+			newnode->prev = tail;
 			tail->next = newnode;
 			tail = newnode;
 		}
 	}
-void linkedlist::insertafter(double existing, double value)
+void Dlinkedlist::insertafter(double existing, double value)
 	{
 		if(isempty())
 		{
@@ -92,7 +94,7 @@ void linkedlist::insertafter(double existing, double value)
 			}
 		}
 	}	
-void linkedlist::insertbefore(double existing, double value)
+void Dlinkedlist::insertbefore(double existing, double value)
 	{
 		if(isempty())
 		{
@@ -116,14 +118,14 @@ void linkedlist::insertbefore(double existing, double value)
 			else
 			{
 				Dnode* newnode = new Dnode(value);
-				newnode->next = currnode;    	   
+				newnode->next = currnode;  
 				newnode->prev = currnode->prev;
 				currnode->prev->next = newnode;
-				currnode->prev = newnode;          
+				currnode->prev = newnode;  	   
 			}
 		}
 	}
-void linkedlist::traverselist()	
+void Dlinkedlist::traverselist()	
 	{
 		if(isempty())
 		{
@@ -140,7 +142,24 @@ void linkedlist::traverselist()
 			}
 		}
 	}	
-void linkedlist::deletefromhead()
+void Dlinkedlist::reversetraverselist()	
+	{
+		if(isempty())
+		{
+			cout<<"\nList is empty.";
+		}
+		else
+		{
+			cout<<"\nValues in list are: "<<endl;
+			Dnode* currnode = tail;
+			while(currnode != 0)
+			{
+				cout<<currnode->data<<endl;
+				currnode = currnode->prev;
+			}
+		}
+	}	
+void Dlinkedlist::deletefromhead()
 	{
 		if(isempty())
 		{
@@ -161,7 +180,7 @@ void linkedlist::deletefromhead()
 			delete dellnode;
 		}
 	}	
-void linkedlist::deletefromtail()
+void Dlinkedlist::deletefromtail()
 	{
 		if(isempty())
 		{
@@ -175,19 +194,14 @@ void linkedlist::deletefromtail()
 		}	
 		else
 		{
-			Dnode* dellnode = head;
-			while(dellnode->next!=0)
-			{
-				dellnode = dellnode->next;
-			}
-			tail = dellnode;
+			Dnode* dellnode = tail;
 			tail->prev->next = 0;
 			tail = tail->prev;
 			dellnode->prev = 0;
 			delete dellnode;
 		}
 	}			
-void linkedlist::deletenode(double value)
+void Dlinkedlist::deleteSnode(double value)
 	{
 		if(isempty())
 		{
@@ -214,8 +228,10 @@ void linkedlist::deletenode(double value)
 			}
 			else
 			{
-				dellnode
-				dellnode->next=0;
+				dellnode->prev->next = dellnode->next;
+				dellnode->next->prev = dellnode->prev;
+				dellnode->next = 0;
+				dellnode->prev = 0;
 				delete dellnode;
 			}
 		}
