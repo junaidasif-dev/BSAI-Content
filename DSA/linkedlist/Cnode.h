@@ -1,12 +1,12 @@
 #include<iostream>
 using namespace std;
 
-class Cnode
+class cnode
 {
 	public:
 		double data;
-		Cnode* next;
-		Cnode(double i=0, Cnode* n=0)
+		cnode* next;
+		cnode(double i=0, cnode* n=0)
 		{
 			data = i;
 			next = n;
