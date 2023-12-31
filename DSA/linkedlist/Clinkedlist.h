@@ -128,7 +128,7 @@ void clinkedlist::traverse()
 }
 void clinkedlist::insertafter(double key, double newData) {
         if (head == 0) {
-            std::cout << "List is empty. Cannot perform insertion." << std::endl;
+            cout << "List is empty. Cannot perform insertion." << std::endl;
             return;
         }
 
@@ -148,7 +148,7 @@ void clinkedlist::insertafter(double key, double newData) {
     }
 void clinkedlist::insertbefore(double key, double newData) {
         if (head == 0) {
-            std::cout << "List is empty. Cannot perform insertion." << std::endl;
+            cout << "List is empty. Cannot perform insertion." << std::endl;
             return;
         }
 
