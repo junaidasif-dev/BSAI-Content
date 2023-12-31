@@ -24,8 +24,7 @@ int main()
 	int choice;
 	linkedlist list;
 	do
-	{
-		
+	{	
 		cout<<"\tPress 1 for insert at head"<<endl;
 		cout<<"\tPress 2 for insert at tail"<<endl;
 		cout<<"\tPress 3 for insert after"<<endl;
@@ -75,7 +74,7 @@ int main()
 			list.traverselist();
 		    break;    
 		default:
-			cout<<"Sorry! Wrong choise"<<endl;
+			cout<<"Sorry! Wrong choice"<<endl;
 			break;
 		}
 		cout<<"\nPress (y) for again continue the program and press any key except (y) for exit: ";

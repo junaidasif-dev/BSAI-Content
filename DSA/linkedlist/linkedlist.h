@@ -43,7 +43,7 @@ void linkedlist::insertathead(double value)
 		}
 		else
 		{
-			newnode->next = head;  // -> for accessing data member
+			newnode->next = head;  
 			head = newnode;
 		}
 	}
