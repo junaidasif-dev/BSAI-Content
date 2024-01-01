@@ -96,7 +96,7 @@ void clinkedlist::deletespecific(double val)
 			prev=curr;
 			curr=curr->next;
 		}
-		if(curr==0)
+		if(curr==head)
 		{
 			cout<<"The value is not in the list\n";
 		}
@@ -126,55 +126,54 @@ void clinkedlist::traverse()
 		while(curr!=head);
 	}
 }
-void clinkedlist::insertafter(double key, double newData) {
+void clinkedlist::insertafter(double exist, double val) {
         if (head == 0) {
-            cout << "List is empty. Cannot perform insertion." << std::endl;
-            return;
+            cout << "List is empty. Cannot perform insertion." <<endl;
         }
 
-        cnode* temp = head;
+        cnode* curr = head;
         do {
-            if (temp->data == key) {
-                cnode* newNode = new cnode(newData);
-                newNode->next = temp->next;
-                temp->next = newNode;
-                std::cout << "Node with data " << newData << " inserted after " << key << std::endl;
+            if (curr->data == exist) {
+                cnode* newNode = new cnode(val);
+                newNode->next = curr->next;
+                curr->next = newNode;
+                cout << "Node with data " << val << " inserted after " << exist << std::endl;
                 return;
             }
-            temp = temp->next;
-        } while (temp != head);
+            curr = curr->next;
+        } while (curr != head);
 
         cout << "Key not found in the list." << std::endl;
     }
-void clinkedlist::insertbefore(double key, double newData) {
+void clinkedlist::insertbefore(double exist, double val) {
         if (head == 0) {
             cout << "List is empty. Cannot perform insertion." << std::endl;
             return;
         }
 
-        cnode* temp = head;
+        cnode* curr = head;
         cnode* prev = 0;
         do {
-            if (temp->data == key) {
-                cnode* newNode = new cnode(newData);
-                if (temp == head) {
+            if (curr->data == exist) {
+                cnode* newNode = new cnode(val);
+                if (curr == head) {
                     newNode->next = head;
-                    while (temp->next != head) {
-                        temp = temp->next;
+                    while (curr->next != head) {
+                        curr = curr->next;
                     }
-                    temp->next = newNode;
+                    curr->next = newNode;
                     head = newNode;
                 } else {
-                    newNode->next = temp;
+                    newNode->next = curr;
                     prev->next = newNode;
                 }
-                std::cout << "Node with data " << newData << " inserted before " << key << std::endl;
+                std::cout << "Node with data " << val << " inserted before " << exist << std::endl;
                 return;
             }
-            prev = temp;
-            temp = temp->next;
-        } while (temp != head);
+            prev = curr;
+            curr = curr->next;
+        } while (curr != head);
 
-        std::cout << "Key not found in the list." << std::endl;
+        cout << "Key not found in the list." <<endl;
     }
 
