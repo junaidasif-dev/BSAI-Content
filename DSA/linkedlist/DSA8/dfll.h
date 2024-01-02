@@ -5,9 +5,9 @@ class TreeLinkedList
 {
 	private:
 		TreeNode* root;
-		TreeNode* loc; //location
-		TreeNode* ploc; //parent location
-		TreeNode* sloc; //successor location
+		TreeNode* loc;   //location
+		TreeNode* ploc;  //parent location
+		TreeNode* sloc;  //successor location
 		TreeNode* psloc; //parent of successor
 	public:
 		TreeLinkedList()
