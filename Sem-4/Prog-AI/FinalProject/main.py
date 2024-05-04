@@ -15,7 +15,7 @@ root.geometry("900x500+300+200")
 root.resizable(False, False)
 
 # API Key for OpenWeatherMap
-API_KEY = "981f47e67901f9d902fd99406512c804"
+API_KEY = "YOUR OPENWEATHERMAP API-KEY"
 
 def getWeather():
     city = textfield.get()
