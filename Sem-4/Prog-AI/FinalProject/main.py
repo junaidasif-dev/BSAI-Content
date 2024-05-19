@@ -1,6 +1,6 @@
 from tkinter import *
 import tkinter as tk
-from geopy.geocoders import Nominatim
+from geopy.geocoders import OpenCage
 from tkinter import ttk, messagebox
 from timezonefinder import TimezoneFinder
 from datetime import datetime
@@ -14,26 +14,31 @@ root.title("Weather App")
 root.geometry("900x500+300+200")
 root.resizable(False, False)
 
-# API Key for OpenWeatherMap
-API_KEY = "YOUR OPENWEATHERMAP API-KEY"
+# API Key for OpenWeatherMap and OpenCage
+OPENWEATHERMAP_API_KEY = "" #Your OpenWeatherMap API key
+OPENCAGE_API_KEY = "" #Your OpenCage API key
 
 def getWeather():
     city = textfield.get()
     
-    geolocator = Nominatim(user_agent="geoapiExercises")
-    location = geolocator.geocode(city)
-    obj = TimezoneFinder()
-    result = obj.timezone_at(lng=location.longitude, lat=location.latitude)
-    home = pytz.timezone(result)
-    local_time = datetime.now(home)
-    current_time = local_time.strftime("%I:%M %p")
-    clock.config(text=current_time)
-    name.config(text='CURRENT WEATHER')
-    
-    # Weather API URL
-    api = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={API_KEY}"
-    
+    geolocator = OpenCage(api_key=OPENCAGE_API_KEY)
     try:
+        location = geolocator.geocode(city)
+        if not location:
+            messagebox.showerror("Error", "Invalid City Name")
+            return
+        
+        obj = TimezoneFinder()
+        result = obj.timezone_at(lng=location.longitude, lat=location.latitude)
+        home = pytz.timezone(result)
+        local_time = datetime.now(home)
+        current_time = local_time.strftime("%I:%M %p")
+        clock.config(text=current_time)
+        name.config(text='CURRENT WEATHER')
+        
+        # Weather API URL
+        api = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={OPENWEATHERMAP_API_KEY}"
+        
         json_data = requests.get(api).json()
         
         condition = json_data['weather'][0]['main']
@@ -50,7 +55,7 @@ def getWeather():
         d.config(text=description)
         p.config(text=f"{pressure} hPa")
     except Exception as e:
-        messagebox.showerror("Error", f"An error occurred: Invalid City Name")
+        messagebox.showerror("Error", f"An error occurred: {e}")
 
 # Search Box
 Search_img = PhotoImage(file='search.png')
