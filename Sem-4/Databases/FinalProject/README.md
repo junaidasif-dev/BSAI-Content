@@ -1,6 +1,6 @@
 # ********Hospital OPD Database Management System********
 
-### **Introduction:**  
+ **Introduction:**  
     This project is a comprehensive database management system for handling Outpatient Department (OPD) operations in a hospital. The system includes functionalities for managing patient records, scheduling appointments, tracking medical histories, generating reports, and handling payments and remunerations.  
 
 ### **Features:**  
