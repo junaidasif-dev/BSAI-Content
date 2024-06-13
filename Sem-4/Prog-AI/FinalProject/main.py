@@ -16,7 +16,7 @@ root.resizable(False, False)
 
 # API Key for OpenWeatherMap and OpenCage
 OPENWEATHERMAP_API_KEY = "" #Your OpenWeatherMap API key
-OPENCAGE_API_KEY = "" #Your OpenCage API key
+OPENCAGE_API_KEY = "" #Your OpenCage API key9
 
 def getWeather():
     city = textfield.get()
