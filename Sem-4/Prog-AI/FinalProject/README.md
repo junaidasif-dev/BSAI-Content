@@ -22,9 +22,9 @@ You need to obtain API keys from the following services:
   **. OpenCage:** https://opencagedata.com/   
 
 ### Usage   
-    . Enter the name of the city in the search box.     
-    . Click the search icon or press Enter to fetch the weather data.   
-    . View the current weather conditions and local time for the specified city.   
+   . Enter the name of the city in the search box.     
+   . Click the search icon or press Enter to fetch the weather data.   
+   . View the current weather conditions and local time for the specified city.   
 
 ### Contributing  
 Feel free to fork this repository and submit pull requests. Contributions are welcome! 
