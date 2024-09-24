@@ -1,0 +1,6 @@
+Components of AI for displaying intelligent behavior (Knowledge Cycle)
+Perception: Input from the senses/input from environment experiences
+Learning: Learn from the input
+Knowledge Representation & Reasoning: How to represent the knowledge and define some rules like why and how we 
+represent our knowledge and how to utilize it and it's called reasoning.
+Execution: And then execute the knowledge.
